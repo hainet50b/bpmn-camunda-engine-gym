@@ -1,0 +1,13 @@
+package com.programacho.bpmncamundaenginegym;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BpmnCamundaEngineGymApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(BpmnCamundaEngineGymApplication.class, args);
+    }
+
+}
