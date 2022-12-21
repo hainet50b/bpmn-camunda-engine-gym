@@ -9,11 +9,12 @@
       <bpmn:incoming>Flow_17vcgsi</bpmn:incoming>
       <bpmn:outgoing>Flow_0xp1nqy</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:inclusiveGateway id="Gateway_0zh4qml">
+    <bpmn:inclusiveGateway id="Gateway_0zh4qml" default="Flow_0m6bzkl">
       <bpmn:incoming>Flow_0xp1nqy</bpmn:incoming>
       <bpmn:outgoing>Flow_0q0j3ue</bpmn:outgoing>
       <bpmn:outgoing>Flow_0mx2zah</bpmn:outgoing>
       <bpmn:outgoing>Flow_00jb2qu</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0m6bzkl</bpmn:outgoing>
     </bpmn:inclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0xp1nqy" sourceRef="Activity_08ziqd8" targetRef="Gateway_0zh4qml" />
     <bpmn:serviceTask id="Activity_1isn465" name="BarService" camunda:delegateExpression="${barService}">
@@ -34,6 +35,10 @@
     <bpmn:sequenceFlow id="Flow_00jb2qu" name="x &#62; 30" sourceRef="Gateway_0zh4qml" targetRef="Activity_1sry7qq">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${value &gt; 30}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0m6bzkl" sourceRef="Gateway_0zh4qml" targetRef="Activity_0xuzpq1" />
+    <bpmn:serviceTask id="Activity_0xuzpq1" name="BazService" camunda:delegateExpression="${bazService}">
+      <bpmn:incoming>Flow_0m6bzkl</bpmn:incoming>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0x2xz4l">
@@ -56,6 +61,10 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0u4k6on_di" bpmnElement="Activity_08ziqd8">
         <dc:Bounds x="310" y="210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12txk8m_di" bpmnElement="Activity_0xuzpq1">
+        <dc:Bounds x="630" y="470" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_17vcgsi_di" bpmnElement="Flow_17vcgsi">
         <di:waypoint x="218" y="250" />
@@ -87,6 +96,11 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="555" y="103" width="30" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m6bzkl_di" bpmnElement="Flow_0m6bzkl">
+        <di:waypoint x="510" y="265" />
+        <di:waypoint x="510" y="510" />
+        <di:waypoint x="630" y="510" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
